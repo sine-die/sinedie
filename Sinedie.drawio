@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-05-16T18:57:54.274Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="_tbxNCzndx4Ji4T6CYau" version="13.1.2" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-16T18:58:14.973Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="6Ex73WOkSuxXxcHLehKi" version="13.1.2" type="github">
   <diagram id="QyLK_1G8izOVnMK4OfBK" name="Flow general">
     <mxGraphModel dx="1113" dy="1160" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -93,10 +93,8 @@
         <mxCell id="_c1tW72TKpihIUh71Ftu-22" value="Pàgina &quot;Aforament&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="740" y="-22.5" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="aOF3CNQLZm2d1WDA1n_z-40" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="_c1tW72TKpihIUh71Ftu-23">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="910" y="83" as="targetPoint" />
-          </mxGeometry>
+        <mxCell id="aOF3CNQLZm2d1WDA1n_z-79" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="_c1tW72TKpihIUh71Ftu-23" target="aOF3CNQLZm2d1WDA1n_z-36">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="_c1tW72TKpihIUh71Ftu-23" value="Pàgina &quot;Reserves&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="740" y="67.5" width="120" height="60" as="geometry" />
