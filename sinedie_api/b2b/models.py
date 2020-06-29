@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 class User(AbstractUser):
     is_business = models.BooleanField(default=False)
-
+    image = models.ImageField(blank=True, null=True)
 
 BUSINESS_TYPES = [
     (0, 'bar'), (1, 'restaurant'),
@@ -28,11 +28,11 @@ class Business(models.Model):
 
 
 class Booking(models.Model):
-    booker = models.CharField(max_length=100) # todo canviar per foreign key
+    client = models.IntegerField() # todo canviar per foreign key
     business = models.ForeignKey(Business, on_delete=models.CASCADE, related_name='bookings')
     date = models.DateField()
     time = models.TimeField()
-    canceled = models.BooleanField(default=True)
+    canceled = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'bookings'
@@ -41,7 +41,7 @@ class Booking(models.Model):
 class Queue(models.Model):
     business = models.ForeignKey(Business, on_delete=models.CASCADE, related_name='queue')
     active = models.BooleanField(default=True)
-    queuer = models.CharField(max_length=100) # todo canviar per foreign key
+    client = models.CharField(max_length=100) # todo canviar per foreign key
 
     class Meta:
         db_table = 'queue'
