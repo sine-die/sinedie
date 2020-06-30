@@ -5,13 +5,20 @@ from .models import *
 from .serializers import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from intermediate.serializers import BookingSerializer, QueueSerializer
+from intermediate.models import Booking, Queue
+from datetime import datetime as dt
 
 
 # Create your views here.
+######################
+### BUSINESS VIEWS ###
+######################
 class ListCreateBusiness(generics.ListCreateAPIView):
     queryset = Business.objects.all()
     serializer_class = BusinessSerializer
     permission_classes = [permissions.AllowAny]
+    filterset_fields = ['postcode']
 
 
 class RetrieveUpdateBusiness(generics.RetrieveUpdateAPIView):
@@ -21,49 +28,24 @@ class RetrieveUpdateBusiness(generics.RetrieveUpdateAPIView):
     permission_classes = [permissions.AllowAny]
 
 
-class ListCreateBooking(generics.ListCreateAPIView):
-    # todo: crear permission isOwnerOrWriteOnly
-    serializer_class = BookingSerializer
-    permission_classes = [permissions.AllowAny]
-
-    def get_queryset(self):
-        return Booking.objects.filter(business=self.kwargs['business']).all()
-
-    def perform_create(self, serializer):
-        business = Business.objects.get(pk=self.kwargs['business'])
-        serializer.save(business=business, **serializer.validated_data)
-
-
-class RetrieveUpdateBooking(generics.RetrieveUpdateAPIView):
-    serializer_class = BookingSerializer
-    permission_classes = [permissions.AllowAny]
-
-    def get_queryset(self):
-        return Booking.objects.filter(business=self.kwargs['business']).all()
-
-
-class ListCreateQueue(generics.ListCreateAPIView):
-    # todo: crear permission isOwnerOrWriteOnly
-    serializer_class = QueueSerializer
-    permission_classes = [permissions.AllowAny]
-
-    def get_queryset(self):
-        return Queue.objects.filter(business=self.kwargs['business'], active=True).all()
-
-    def perform_create(self, serializer):
-        business = Business.objects.get(pk=self.kwargs['business'])
-        serializer.save(business=business, **serializer.validated_data)
-
-
-class PopQueue(APIView):
+######################
+### BOOKINGS VIEWS ###
+######################
+class ListBooking(generics.ListCreateAPIView):
     # todo: crear permission isOwner
+    serializer_class = BookingSerializer
     permission_classes = [permissions.AllowAny]
 
-    def get(self, request, business, pk, format=None):
-        q = Queue.objects.filter(pk=pk).update(active=False)
-        return Response()
+    def get_queryset(self):
+        return Booking.objects.filter(
+            business=self.kwargs['business'], date__gte=dt.now().date(),
+            time__gte=dt.now().time()
+        ).all()
 
 
+######################
+### CAPACITY VIEWS ###
+######################
 class RetrieveUpdateCapacity(APIView):
     # todo: crear permission isOwner
     permission_classes = [permissions.AllowAny]

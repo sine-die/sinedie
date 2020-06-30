@@ -1,27 +1,27 @@
-from .models import Business
+from .models import Client
 from rest_framework import serializers
 from intermediate.models import User
 
 
-class BusinessSerializer(serializers.ModelSerializer):
+class ClientSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(source='user.id', read_only=True)
     name = serializers.CharField(source='user.first_name')
     username = serializers.CharField(source='user.username')
     is_business = serializers.BooleanField(source='user.is_business')
     password = serializers.CharField(source='user.password', write_only=True)
+    phone = serializers.CharField(source='user.')
 
     class Meta:
-        model = Business
+        model = Client
         fields = [
             'id', 'username', 'name', 'username', 'is_business', 'password', 'phone',
-            'address', 'city', 'postcode', 'max_capacity', 'cur_capacity',
-            'business_type', 'description'
+            'favorites', 'cur_postcode'
         ]
 
     def create(self, validated_data):
         validated_user = validated_data.pop('user')
         u = User.objects.create(**validated_user)
-        return Business.objects.create(user=u, **validated_data)
+        return Client.objects.create(user=u, **validated_data)
 
     def update(self, instance, validated_data):
         user = validated_data.pop('user', [])
