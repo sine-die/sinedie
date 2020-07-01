@@ -28,6 +28,15 @@ class RetrieveUpdateBusiness(generics.RetrieveUpdateAPIView):
     permission_classes = [permissions.AllowAny]
 
 
+class RetrieveBusiness(generics.RetrieveUpdateAPIView):
+    # todo: crear permission isOwnerOrReadOnly
+    serializer_class = BusinessSerializer
+    permission_classes = [permissions.AllowAny]
+
+    def get_object(self):
+        return self.request.user.business
+
+
 ######################
 ### BOOKINGS VIEWS ###
 ######################
@@ -38,8 +47,20 @@ class ListBooking(generics.ListCreateAPIView):
 
     def get_queryset(self):
         return Booking.objects.filter(
-            business=self.kwargs['business'], date__gte=dt.now().date(),
-            time__gte=dt.now().time()
+            business=self.request.user.business,
+            date__gte=dt.now().date(), time__gte=dt.now().time()
+        ).all()
+
+
+class ListQueue(generics.ListCreateAPIView):
+    # todo: crear permission isOwner
+    serializer_class = QueueSerializer
+    permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        return Queue.objects.filter(
+            business=self.request.user.business,
+            active=True
         ).all()
 
 

@@ -6,6 +6,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     is_business = models.BooleanField(default=False)
     image = models.ImageField(blank=True, null=True)
+    phone = models.CharField(max_length=9)
 
 
 class Booking(models.Model):

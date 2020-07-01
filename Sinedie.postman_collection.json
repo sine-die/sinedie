@@ -1,0 +1,890 @@
+{
+	"info": {
+		"_postman_id": "b0711904-a3ed-4055-aa12-3842d8914159",
+		"name": "Sinedie",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"nuria@example.es\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/rest-auth/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"rest-auth",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2C - Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Nur\",\n    \"username\": \"nuria@example.es\",\n    \"email\": \"nuria@example.es\",\n    \"password\": \"password\",\n    \"phone\": \"678106247\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/client/create/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"client",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2C - Veure perfil",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}client/me/",
+					"host": [
+						"{{url}}client"
+					],
+					"path": [
+						"me",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2B - Register ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Bar Paco\",\n    \"username\": \"bar@paco.com\",\n    \"email\": \"bar@paco.com\",\n    \"password\": \"password\",\n    \"is_business\": \"True\",\n    \"address\": \"C/Lala 123\",\n    \"city\": \"Barcelona\",\n    \"postcode\": \"08019\",\n    \"max_capacity\": 10,\n    \"cur_capacity\": 0,\n    \"business_type\": 0,\n    \"description\": \"Descripcio\",\n    \"phone\": \"933086610\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}business/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2C - Veure reserves",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}client/bookings/",
+					"host": [
+						"{{url}}client"
+					],
+					"path": [
+						"bookings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2C - Veure favorits",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}client/favorites/",
+					"host": [
+						"{{url}}client"
+					],
+					"path": [
+						"favorites",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2C - Enviar codi postal actual",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"location\": \"08019\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}client/location/",
+					"host": [
+						"{{url}}client"
+					],
+					"path": [
+						"location",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2C- Veure business",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}business/6",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2B - Veure perfil",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}business/me/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"me",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2B - Veure client",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}client/5/",
+					"host": [
+						"{{url}}client"
+					],
+					"path": [
+						"5",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2B - Veure aforament",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}business/7/capacity",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"7",
+						"capacity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2C - Fer reserva",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\": \"2020-07-30\",\n    \"time\": \"20:30\",\n    \"num_people\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}business/7/bookings/create/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"7",
+						"bookings",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2B - Fer reserva",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3b07b4c85350076375321b1262d1b5153931308c",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\": \"2020-06-30\",\n    \"time\": \"20:30\",\n    \"num_people\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}business/7/bookings/create/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"7",
+						"bookings",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2B - Modificar reserva",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3b07b4c85350076375321b1262d1b5153931308c",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\": \"2020-06-30\",\n    \"time\": \"20:30\",\n    \"num_people\": 5,\n    \"notes\": \"reserva a nom de maricarmen\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}business/7/bookings/2/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"7",
+						"bookings",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2B - Veure reserves",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3b07b4c85350076375321b1262d1b5153931308c",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}business/7/bookings/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"7",
+						"bookings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2B - Veure cua",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3b07b4c85350076375321b1262d1b5153931308c",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}business/queue/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"queue",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2C - Veure reserves",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3b07b4c85350076375321b1262d1b5153931308c",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}client/bookings/",
+					"host": [
+						"{{url}}client"
+					],
+					"path": [
+						"bookings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2C - Afegir-se a cua",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3b07b4c85350076375321b1262d1b5153931308c",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}business/7/queue/create/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"7",
+						"queue",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2C - Num de gent fent cua",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3b07b4c85350076375321b1262d1b5153931308c",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}business/7/queue/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"7",
+						"queue",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2B - Clients en cua",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3b07b4c85350076375321b1262d1b5153931308c",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}business/queue/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"queue",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2B - Afegir a cua",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3b07b4c85350076375321b1262d1b5153931308c",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}business/7/queue/create/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"7",
+						"queue",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2B - Treure de cua",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3b07b4c85350076375321b1262d1b5153931308c",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}business/7/queue/1/pop/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"7",
+						"queue",
+						"1",
+						"pop",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2C - Sortir de cua",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3b07b4c85350076375321b1262d1b5153931308c",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}business/7/queue/1/pop/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"7",
+						"queue",
+						"1",
+						"pop",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2B - Incrementar aforament",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"increase\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}business/7/capacity/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"7",
+						"capacity",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "B2B - Restar aforament",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 3aed6823f7d634dca449a4f26e2f5521dba85e5d",
+						"description": "Token + key obtinguda en la resposta del login",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"decrease\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}business/7/capacity/",
+					"host": [
+						"{{url}}business"
+					],
+					"path": [
+						"7",
+						"capacity",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

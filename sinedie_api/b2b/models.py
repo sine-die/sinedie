@@ -15,7 +15,6 @@ class Business(models.Model):
     cur_capacity = models.IntegerField()
     business_type = models.CharField(max_length=200, choices=BUSINESS_TYPES)
     description = models.TextField()
-    phone = models.CharField(max_length=9)
 
     class Meta:
         db_table = 'business_users'

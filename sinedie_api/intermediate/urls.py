@@ -8,5 +8,5 @@ urlpatterns = [
     path('business/<int:business>/bookings/<int:pk>/', RetrieveUpdateBooking.as_view()),
     path('business/<int:business>/queue/create/', CreateQueue.as_view()),
     path('business/<int:business>/queue/', ListQueue.as_view()),
-    path('business/<int:business>/queue/pop/<int:pk>/', PopQueue.as_view()),
+    path('business/<int:business>/queue/<int:pk>/pop/', PopQueue.as_view()),
 ]

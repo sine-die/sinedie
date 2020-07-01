@@ -21,7 +21,7 @@ class CreateBooking(generics.CreateAPIView):
     def perform_create(self, serializer):
         business = Business.objects.get(pk=self.kwargs['business'])
         client = self.request.user.client if hasattr(self.request.user, 'client') \
-            else Client.objects.get(username='anonymous')
+            else Client.objects.get(user__username='anonymous')
         serializer.save(business=business, client=client, **serializer.validated_data)
 
 
@@ -43,7 +43,12 @@ class CreateQueue(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         business = Business.objects.get(pk=self.kwargs['business'])
-        serializer.save(business=business, **serializer.validated_data)
+        client = self.request.user.client if hasattr(self.request.user, 'client') \
+            else Client.objects.get(user__username='anonymous')
+        serializer.save(
+            business=business, client=client,
+            **serializer.validated_data
+        )
 
 
 class PopQueue(APIView):
@@ -55,13 +60,14 @@ class PopQueue(APIView):
         return Response()
 
 
-class ListQueue(generics.ListCreateAPIView):
+class ListQueue(APIView):
     # todo: crear permission isOwnerOrWriteOnly
-    serializer_class = QueueSerializer
+    #serializer_class = QueueSerializer
     permission_classes = [permissions.AllowAny]
 
-    def get_queryset(self):
-        if hasattr(self.user, 'business'):
-            return Queue.objects.filter(business=self.kwargs['business'], active=True).all()
-        else:
-            return Queue.objects.filter(business=self.kwargs['business'], active=True).count()
+    def get(self, request, business, format=None):
+        return Response(
+            {
+                'people_waiting': Queue.objects.filter(business=business, active=True).count()
+            }
+        )

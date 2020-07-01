@@ -9,6 +9,7 @@ class BusinessSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source='user.username')
     is_business = serializers.BooleanField(source='user.is_business')
     password = serializers.CharField(source='user.password', write_only=True)
+    phone = serializers.CharField(source='user.phone')
 
     class Meta:
         model = Business
@@ -20,7 +21,7 @@ class BusinessSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         validated_user = validated_data.pop('user')
-        u = User.objects.create(**validated_user)
+        u = User.objects.create_user(**validated_user)
         return Business.objects.create(user=u, **validated_data)
 
     def update(self, instance, validated_data):

@@ -24,8 +24,15 @@ class RetrieveUpdateClient(generics.RetrieveUpdateAPIView):
     serializer_class = ClientSerializer
     permission_classes = [permissions.AllowAny]
 
-    def get_queryset(self):
-        return Client.objects.filter(client__user__pk=self.request.user.pk)
+    def get_object(self):
+        return self.request.user.client
+
+
+class RetrieveClient(generics.RetrieveUpdateAPIView):
+    # todo: crear permission isOwnerOrReadOnly
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+    permission_classes = [permissions.AllowAny]
 
 
 ######################
@@ -43,7 +50,7 @@ class ListBooking(generics.ListCreateAPIView):
 
 
 class ListFavoriteBusiness(generics.ListAPIView):
-    serializer = BusinessSerializer
+    serializer_class = BusinessSerializer
     permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
